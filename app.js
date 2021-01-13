@@ -16,7 +16,6 @@ dotenv.config();
 //requring routes
 const indexRoutes = require('./routes/index');
 const repeaterRoutes = require('./routes/repeaters');
-const manageRoutes = require('./routes/manage');
 const authRoutes = require('./routes/auth');
 const articleRoutes = require('./routes/article');
 const aupRoutes = require('./routes/aup');
@@ -58,7 +57,6 @@ app.use((req, res, next) => {
 
 app.use(indexRoutes);
 app.use('/repeater', repeaterRoutes);
-app.use('/manage', manageRoutes);
 app.use('/auth', authRoutes);
 app.use('/article', articleRoutes);
 app.use('/aup', aupRoutes);

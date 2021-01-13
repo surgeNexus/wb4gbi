@@ -6,7 +6,7 @@ const middleware = require('../middleware/index');
 const Repeater = require('../models/Repeater');
 const Article = require('../models/Article');
 
-router.get('/new', (req, res) => {
+router.get('/new', middleware.isLoggedIn, (req, res) => {
   Repeater.find({}, (err, foundRepeaters) => {
       if(err){
           console.log(err);
@@ -18,7 +18,7 @@ router.get('/new', (req, res) => {
     });
 });
 
-router.post('/new', (req, res) => {
+router.post('/new', middleware.isLoggedIn, (req, res) => {
   if(!req.files){
     const newRepeater = {
       frequency: req.body.frequency,
@@ -64,7 +64,7 @@ router.post('/new', (req, res) => {
   }
 });
 
-router.get('/:repeater/edit', (req, res) => {
+router.get('/:repeater/edit', middleware.isLoggedIn, (req, res) => {
   Repeater.find({}, (err, foundRepeaters) => {
     if(err){
       console.log(err);
@@ -83,7 +83,7 @@ router.get('/:repeater/edit', (req, res) => {
   });
 });
 
-router.put('/:repeater_id/edit', (req, res) => {
+router.put('/:repeater_id/edit', middleware.isLoggedIn, (req, res) => {
   if(!req.files){
     Repeater.findById(req.params.repeater_id, (err, repeater) => {
       if(err){
@@ -143,7 +143,7 @@ router.get('/:freq', (req, res) => {
   });
 });
 
-router.post('/:repeater/article/new', (req, res) => {
+router.post('/:repeater/article/new', middleware.isLoggedIn, (req, res) => {
   Repeater.findById(req.params.repeater, (err, foundRepeater) => {
     if(err){ 
       console.log(err);

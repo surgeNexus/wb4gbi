@@ -7,7 +7,7 @@ const middleware = require('../middleware/index');
 const Repeater = require('../models/Repeater');
 const User = require('../models/User');
 
-router.get('/register', function (req, res) {
+router.get('/register', middleware.isLoggedIn, function (req, res) {
   Repeater.find({}, (err, foundRepeaters) => {
     if(err){console.log(err); res.redirect('back')}
     res.render('auth/register', {
@@ -17,7 +17,7 @@ router.get('/register', function (req, res) {
 });
   
   //handle sign up logic
-  router.post('/register', function (req, res) {
+  router.post('/register', middleware.isLoggedIn, function (req, res) {
     if (req.body.password === req.body.password2) {
       var newUser = new User({
         username: req.body.username,

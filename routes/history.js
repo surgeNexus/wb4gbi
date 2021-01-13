@@ -7,7 +7,7 @@ const Repeater = require('../models/Repeater');
 const History = require('../models/History');
 const Article = require('../models/Article');
 
-router.post('/new/:repeater', (req, res) => {
+router.post('/new/:repeater', middleware.isLoggedIn, (req, res) => {
     Repeater.findById(req.params.repeater, (err, foundRepeater) => {
         if(err){console.log(err); res.redirect('back')}
         const newHistory = {
@@ -36,7 +36,7 @@ router.get('/:frequency', (req, res) => {
     })
 })
 
-router.post('/article/:frequency/new', (req, res) => {
+router.post('/article/:frequency/new', middleware.isLoggedIn, (req, res) => {
     History.findOne({frequency: req.params.frequency}, (err, foundHistory) => {
         if(err){console.log(err); res.redirect('back')}
         Repeater.findById(foundHistory.repeaterId, (err, foundRepeater) => {
@@ -82,7 +82,7 @@ router.post('/article/:frequency/new', (req, res) => {
     });
 });
 
-router.get('/:article/edit', (req, res) => {
+router.get('/:article/edit', middleware.isLoggedIn, (req, res) => {
     Repeater.find({}, (err, foundRepeaters) => {
         Article.findById(req.params.article, (err, foundArticle) => {
             if(err){console.log(err); res.redirect('back')}
@@ -94,7 +94,7 @@ router.get('/:article/edit', (req, res) => {
     });
 });
 
-router.put('/:article/edit', (req, res) => {
+router.put('/:article/edit', middleware.isLoggedIn, (req, res) => {
     Repeater.find({}, (err, foundRepeaters) => {
         if(err){
             console.log(err); 

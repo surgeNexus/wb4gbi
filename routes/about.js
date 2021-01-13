@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', middleware.isLoggedIn, (req, res) => {
         if(!req.files){
         const newAbout = {
             title: req.body.title,
@@ -75,7 +75,7 @@ router.post('/', (req, res) => {
     } 
 });
 
-router.get('/:about/edit', (req, res) => {
+router.get('/:about/edit', middleware.isLoggedIn, (req, res) => {
     Repeater.find({}, (err, foundRepeaters) => {
         if(err){console.log(err); res.redirect('back')}
         About.findById(req.params.about, (err, foundAbout) => {
@@ -88,7 +88,7 @@ router.get('/:about/edit', (req, res) => {
     });
 });
 
-router.put('/:about/edit', (req, res) => {
+router.put('/:about/edit', middleware.isLoggedIn, (req, res) => {
     About.findById(req.params.about, (err, about) => {
     if(!req.files){
         if(err){console.log(err); res.redirect('back')}

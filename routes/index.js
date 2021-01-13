@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
   });
 });
 
-router.post('/new', (req, res) => {
+router.post('/new', middleware.isLoggedIn, (req, res) => {
   if(!req.files) {
     const newArticle = {
       name: req.body.name,
@@ -55,7 +55,7 @@ router.post('/new', (req, res) => {
   }
 });
 
-router.get('/:home/edit', (req, res) => {
+router.get('/:home/edit', middleware.isLoggedIn, (req, res) => {
   Repeater.find({}, (err, foundRepeaters) => {
     if(err){console.log(err); res.redirect('back')}
     Home.findById(req.params.home, (err, foundHome) => {
@@ -72,7 +72,7 @@ router.get('/:home/edit', (req, res) => {
   });
 });
 
-router.put('/:home/edit', (req, res) => {
+router.put('/:home/edit', middleware.isLoggedIn, (req, res) => {
     Home.findById(req.params.home, (err, foundArticle) => {
       if(err){
         console.log(err);
