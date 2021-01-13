@@ -1,0 +1,35 @@
+<%- include('../partials/header') %>
+
+<div class="container d-flex justify-content-center">
+    <div class="row">
+        <h1>Manage Article</h1>    
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form action="/history/<%= article.id %>/edit?_method=PUT" method="POST" encType="multipart/form-data">
+                <div class="mb-3">
+                  <label for="freq" class="form-label">Title</label>
+                  <input type="text" class="form-control" name="name" value="<%= article.name %>" id="freq" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Brief Information (This will appear as one paragraph)</label>
+                  <textarea rows="10" cols="70" class="form-control" name="text"><%= article.text %></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Repeater Image</label>
+                  <div class="d-flex justify-content-center">
+                    <img class="edit-image" src="<%= article.image %>" alt="">
+                  </div>
+                  <br>
+                  <input type="file" class="form-control" name="image" id="" value="<%= article.image %>">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<%- include('../partials/footer') %>

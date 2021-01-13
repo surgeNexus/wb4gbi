@@ -1,0 +1,90 @@
+<%- include('./partials/header') %>
+
+<div class="container d-flex justify-content-center">
+    <img src="/images/wb4gbiBanner.png" alt="WB4GBI Banner" class="banner-image">
+</div>
+<hr>
+<% if(currentUser) { %>
+<div class="container">
+    <div class="row">
+        <div class="col head-room">
+            <div class="text-center">
+                <p>
+                  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Add Article
+                  </button>
+                </p>
+                <div class="collapse" id="collapseExample">
+                  <div class="card card-body">
+                    <form action="/new" method="POST" encType="multipart/form-data">
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Title</label>
+                          <input type="text" class="form-control" name="name" id="exampleInputPassword1">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Article Body</label>
+                          <textarea rows="10" cols="70" class="form-control" name="text"></textarea>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Image</label>
+                          <input type="file" class="form-control" name="image" id="">
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-md btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-12">
+        <% repeaters.forEach((repeater) => { %>
+            <div class="head-room">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="card-title text-center"><%= repeater.frequency %></h1>
+                        <h6 class="text-center">Tone: <%= repeater.tone %></h6>
+                        <div class="d-flex justify-content-center">
+                            <img class="status-image" src="<% if(repeater.status === true){ %>/images/onAir.gif<% } else { %>/images/offAir.png<% } %>" alt="Status: <% if(repeater.status === true){ %>On Air<% } else { %>Off Air<% } %>">
+                        </div>
+                    </div>
+                    <div class="card-body text-center">
+                        <a href="/repeater/<%= repeater.frequency %>" class="btn btn-warning">More Info</a>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+        </div>
+        <div class="col-md-9 col-sm-12">
+            <% homes.forEach((home) => { %>
+                <div class="head-room">
+                    <div class="card">
+                        <div class="card-header">
+                            <h1 class="card-title text-center"><%= home.name %></h1>
+                            <% if(currentUser) { %>
+                            <a class="d-flex justify-content-center" href="/<%= home.id %>/edit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                                </svg>
+                            </a>
+                            <% } %>
+                        </div>
+                        <div class="card-body">
+                            <p><%- home.text %></p>
+                        </div>
+                        <div class="d-flex justify-content-center foot-room">
+                            <img class="article-image img-fluid" src="<%= home.image %>" alt="">
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+
+<%- include('./partials/footer') %>

@@ -1,0 +1,56 @@
+<%- include('../partials/header') %>
+
+<div class="container d-flex justify-content-center">
+    <img src="/images/wb4gbiBanner.png" alt="WB4GBI Banner" class="banner-image">
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+                <form action="/article/<%= article.id %>/<%= repeater.id %>/edit?_method=PUT" method="POST" encType="multipart/form-data">
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Title</label>
+                      <input type="text" class="form-control" name="name" value="<%= article.name %>" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Article Body</label>
+                      <textarea rows="10" cols="70" class="form-control" name="text"><%= article.text %></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Image</label>
+                      <div class="d-flex justify-content-center">
+                        <img class="edit-image" src="<%= article.image %>" alt="">   
+                      </div>
+                      <br>
+                      <input type="file" class="form-control" name="image" id="">
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-md btn-primary" type="submit">Submit</button>
+                    </div>
+                </form>
+                <br>
+                <hr>
+                <form class="foot-room" action="/article/<%= article.id %>/delete?_method=DELETE" method="POST">
+                    <div class="text-center text-danger">
+                        <h2>PLEASE USE WITH CAUTION!</h2>
+                        <p>This action can not be undone.</p>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-sm btn-danger" onclick="return ConfirmDelete()" type="submit">Delete</button>
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function ConfirmDelete()
+    {
+      var x = confirm("Are you sure you wish to delete this article? This action can not be undone.");
+      if (x)
+          return true;
+      else
+        return false;
+    }
+</script>  
+
+<%- include('../partials/footer') %>

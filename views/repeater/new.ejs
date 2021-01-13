@@ -1,0 +1,43 @@
+<%- include('../partials/header') %>
+
+<div class="container d-flex justify-content-center">
+    <div class="row">
+        <h1>Manage Repeaters</h1>    
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form action="/repeater/new" method="POST" encType="multipart/form-data">
+                <div class="mb-3">
+                  <label for="freq" class="form-label">Frequency</label>
+                  <input type="text" class="form-control" name="frequency" id="freq" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Tone</label>
+                  <input type="text" class="form-control" name="tone" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Location</label>
+                  <input type="text" class="form-control" name="location" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Brief information about repeater</label>
+                  <input type="text" class="form-control" name="statusText" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Repeater Image</label>
+                  <input type="file" class="form-control" name="image" id="">
+                </div>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" name="status" value="true" id="flexSwitchCheckDefault">
+                  <label class="form-check-label" for="flexSwitchCheckDefault">Repeater status. (Off air, On air)</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,75 @@
+.banner-image {
+    max-width: 100%;
+    max-height: auto;
+}
+
+.status-image {
+    max-height: 30px;
+    max-width: auto;
+}
+
+.head-room {
+    padding-top: 20px;
+}
+
+.foot-room {
+    padding-bottom: 20px;
+}
+
+.navbar-orange {
+    background-color: #FF8200 !important;
+}
+
+.navbar-nav > li > .dropdown-menu  {
+    background-color: #FF8200;
+}
+
+.navbar-nav > li a {
+    color: white;
+}
+
+.btn-warning {
+    background-color: #FF8200 !important;
+}
+
+.article-image {
+    max-height: 500px;
+    max-width: 800px;
+}
+
+.article-image-sm {
+    max-height: 300px;
+    max-width: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.edit-image {
+    max-height: 250px;
+    max-width: 400px;
+}
+
+body {
+    background-image: linear-gradient(to right, rgb(148, 148, 148) , rgb(36, 36, 36));
+}
+
+.a-black {
+    color: black;
+}
+
+.builder-logo {
+    max-height: 50px;
+    max-width: auto;
+}
+
+.img-tim {
+    max-width: 300px;
+    max-height: auto;
+}
+
+.footer-img {
+    max-width: 200px;
+    max-height: auto;
+}

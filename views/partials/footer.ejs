@@ -1,0 +1,69 @@
+<div class="head-room">
+    <nav class="navbar-orange">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col">
+                    <h1>WB4GBI Repeater System</h1>
+                </div>
+                <br>
+            </div>
+            <hr>
+            <div class="row text-center">
+                <div class="col-md-3 col-sm-6">
+                    <div>
+                        <h4>Tim Berry</h4>
+                        <h5>WB4GBI</h5>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <img class="footer-img" src="/images/tim.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div>
+                        <h4>Home Links</h4>
+                    </div>
+                    <div>
+                        <a class="a-black" href="/">Home</a>
+                    </div>
+                    <div>
+                        <a class="a-black" href="/about">About</a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div>
+                        <h4>Repeater Links</h4>
+                    </div>
+                    <% repeaters.forEach((repeater) => { %>
+                        <div>
+                            <a class="a-black" href="<%= repeater.frequency %>"><%= repeater.frequency %></a>
+                        </div>
+                    <% }) %>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div>
+                        <h4>Important Information</h4>
+                    </div>
+                    <div>
+                        <a class="a-black" target="_blank" href="/aup">Acceptable Use Policy</a>
+                    </div>
+                    <br>
+                </div>
+                <div class="col-md-2 col-sm-6 position-relative">
+                    <div class="position-absolute bottom-0 end-0">
+                        <img src="/images/k4avgLogo.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="container">
+                <div class="row text-center">
+                    <p>© 2021 WB4GBI</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> 
+    
+    </body>
+</html>

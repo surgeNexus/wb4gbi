@@ -1,0 +1,38 @@
+<%- include('../partials/header') %>
+
+<div class="container d-flex justify-content-center">
+    <div class="row">
+        <h1>Manage Repeaters</h1>    
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form action="/about/<%= about.id %>/edit?_method=PUT" method="POST" encType="multipart/form-data">
+                <div class="mb-3">
+                  <label for="freq" class="form-label">Title</label>
+                  <input type="text" class="form-control" name="title" value="<%= about.title %>" id="freq" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Text</label>
+                  <textarea rows="10" cols="70" class="form-control" name="text"><%= about.text %></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Images</label>
+                  <div class="d-flex justify-content-center">
+                    <img class="edit-image" src="<%= about.image %>" alt="">
+                    <img class="edit-image" src="<%= about.image2 %>" alt="">
+                    <img class="edit-image" src="<%= about.image3 %>" alt="">
+                  </div>
+                  <br>
+                  <input type="file" class="form-control" name="image" id="" value="<%= about.image %>">
+                  <input type="file" class="form-control" name="image2" id="" value="<%= about.image2 %>">
+                  <input type="file" class="form-control" name="image3" id="" value="<%= about.image3 %>">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
