@@ -21,11 +21,11 @@
                   <label for="exampleInputPassword1" class="form-label">Location</label>
                   <input type="text" class="form-control" name="location" value="<%= repeater.location %>" id="exampleInputPassword1">
                 </div>
+                <%- include('../partials/legend') %>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Brief Information (This will appear as one paragraph)</label>
                   <textarea rows="10" cols="70" class="form-control" name="statusText"><%= repeater.statusText %></textarea>
                 </div>
-                
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Repeater Image</label>
                   <div class="d-flex justify-content-center">
@@ -39,6 +39,16 @@
                   <label class="form-check-label" for="flexSwitchCheckDefault">Repeater status. (Off air, On air)</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <br><hr>
+            <form class="foot-room" action="/repeater/<%= repeater.id %>/delete?_method=DELETE" method="POST">
+                <div class="text-center text-danger">
+                    <h2>PLEASE USE WITH CAUTION!</h2>
+                    <p>This action can not be undone.</p>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-sm btn-danger" onclick="return ConfirmDelete()" type="submit">Delete</button>
+                </div>
             </form>
         </div>
     </div>

@@ -13,6 +13,7 @@
                   <label for="freq" class="form-label">Title</label>
                   <input type="text" class="form-control" name="title" value="<%= about.title %>" id="freq" aria-describedby="emailHelp">
                 </div>
+                <%- include('../partials/legend') %>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Text</label>
                   <textarea rows="10" cols="70" class="form-control" name="text"><%= about.text %></textarea>
@@ -30,6 +31,12 @@
                   <input type="file" class="form-control" name="image3" id="" value="<%= about.image3 %>">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <br><br><hr>
+            <form class="text-center" action="/about/<%= about.id %>/delete?_method=DELETE" method="POST">
+              <h2 class="text-danger">Proceed with CAUTION!</h2>
+              <h3>This action can not be undone.</h3>
+              <button class="btn btn-danger btn-sm" onclick="return ConfirmDelete()" type="submit">Delete</button>
             </form>
         </div>
     </div>

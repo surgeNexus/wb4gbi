@@ -10,7 +10,6 @@ router.get('/:article/:repeater/edit', middleware.isLoggedIn, (req, res) => {
     if(err){console.log(err)}
     Repeater.findById(req.params.repeater, (err, foundRepeater) => {
       if(err){console.log(err)}
-    
       Article.findById(req.params.article, (err, foundArticle) => {
         if(err){
           console.log(err);
@@ -56,6 +55,13 @@ router.put('/:article/:repeater/edit', middleware.isLoggedIn, (req, res) => {
         res.redirect('/repeater/' + foundRepeater.frequency);
       }
     });
+  });
+});
+
+router.delete('/:article/:repeater/delete', middleware.isLoggedIn, (req, res) => {
+  Article.findByIdAndDelete(req.params.article, (err) => {
+    if(err){console.log(err); res.redirect('back')}
+    res.redirect('/repeater/' + req.params.repeater);
   });
 });
 

@@ -14,12 +14,12 @@
                   <input type="text" class="form-control" name="name" value="<%= home.name %>" id="freq" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Brief Information (This will appear as one paragraph)</label>
+                    <%- include('../partials/legend') %>
+                  <label for="exampleInputPassword1" class="form-label">Article Body</label>
                   <textarea rows="10" cols="70" class="form-control" name="text"><%= home.text %></textarea>
                 </div>
-                
                 <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Repeater Image</label>
+                  <label for="exampleInputPassword1" class="form-label">Image</label>
                   <div class="d-flex justify-content-center">
                     <img class="edit-image" src="<%= home.image %>" alt="">
                   </div>
@@ -28,9 +28,18 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            <hr><br>
+            <form class="foot-room" action="/<%= home.id %>/delete?_method=DELETE" method="POST">
+                <div class="text-center text-danger">
+                    <h2>PLEASE USE WITH CAUTION!</h2>
+                    <p>This action can not be undone.</p>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-sm btn-danger" onclick="return ConfirmDelete()" type="submit">Delete</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-
 
 <%- include('../partials/footer') %>

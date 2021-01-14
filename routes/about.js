@@ -145,4 +145,11 @@ router.put('/:about/edit', middleware.isLoggedIn, (req, res) => {
     });
 });
 
+router.delete('/:about/delete', middleware.isLoggedIn, (req, res) => {
+  About.findByIdAndDelete(req.params.about, (err) => {
+    if(err){console.log(err); res.redirect('back')}
+    res.redirect('/about');
+  });
+});
+
 module.exports = router;

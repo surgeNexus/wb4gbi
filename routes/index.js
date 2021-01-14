@@ -102,4 +102,11 @@ router.put('/:home/edit', middleware.isLoggedIn, (req, res) => {
   });
 });
 
+router.delete('/:home/delete', middleware.isLoggedIn, (req, res) => {
+  Home.findByIdAndDelete(req.params.home, (err) => {
+    if(err){console.log(err); res.redirect('back')}
+    res.redirect('/');
+  });
+});
+
 module.exports = router;

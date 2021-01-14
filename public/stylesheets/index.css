@@ -73,3 +73,7 @@ body {
     max-width: 200px;
     max-height: auto;
 }
+
+.legend {
+    background: gray;
+}

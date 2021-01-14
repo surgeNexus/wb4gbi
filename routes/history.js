@@ -46,7 +46,8 @@ router.post('/article/:frequency/new', middleware.isLoggedIn, (req, res) => {
             } else if(!req.files) {
                 const newArticle = {
                     name: req.body.name,
-                    text: req.body.text
+                    text: req.body.text,
+                    repeaterFreq: foundRepeater.frequency
                 }
                 Article.create(newArticle, (err, article) => {
                     if(err){console.log(err); res.redirect('back')}
@@ -69,6 +70,7 @@ router.post('/article/:frequency/new', middleware.isLoggedIn, (req, res) => {
                 const newArticle = {
                     name: req.body.name,
                     text: req.body.text,
+                    repeaterFreq: foundRepeater.frequency,
                     image: movedImage
                 }
                 Article.create(newArticle, (err, article) => {
@@ -131,6 +133,13 @@ router.put('/:article/edit', middleware.isLoggedIn, (req, res) => {
             });
         }
     });
+});
+
+router.delete('/:article/:repeater/delete', middleware.isLoggedIn, (req, res) => {
+  Article.findByIdAndDelete(req.params.article, (err) => {
+    if(err){console.log(err); res.redirect('back')}
+    res.redirect('/history/' + req.params.repeater);
+  });
 });
 
 

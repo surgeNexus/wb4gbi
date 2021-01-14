@@ -188,4 +188,11 @@ router.post('/:repeater/article/new', middleware.isLoggedIn, (req, res) => {
   });
 });
 
+router.delete('/:repeater/delete', middleware.isLoggedIn, (req, res) => {
+  Repeater.findByIdAndDelete(req.params.repeater, (err) => {
+    if(err){console.log(err); res.redirect('back')}
+    res.redirect('/');
+  });
+});
+
 module.exports = router;

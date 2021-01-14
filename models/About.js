@@ -5,7 +5,8 @@ var AboutSchema = new mongoose.Schema({
   text: String,
   image: String,
   image2: String,
-  image3: String
+  image3: String,
+  repeaterId: String
 });
 
 module.exports = mongoose.model('About', AboutSchema);
