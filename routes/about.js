@@ -20,59 +20,67 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', middleware.isLoggedIn, (req, res) => {
-        if(!req.files){
-        const newAbout = {
-            title: req.body.title,
-            text: req.body.text
+  if(!req.files){
+    const newAbout = {
+        title: req.body.title,
+        text: req.body.text
+    }
+    About.create(newAbout, (err, about) => {
+        if(err){console.log(err); res.redirect('back')}
+        res.redirect('back');
+    });
+  } else {
+    if(req.files.image){
+      var now = moment();
+      let newImage = req.files.image;
+      newImage.mv(
+        './public/uploads/' + now + newImage.name,
+        function (err) {
+          if (err) {
+            console.log(err);
+          }
         }
-        About.create(newAbout, (err, about) => {
-            if(err){console.log(err); res.redirect('back')}
-            res.redirect('back');
-        });
-    } else {
-        var now = moment();
-        let newImage = req.files.image;
-        newImage.mv(
-          './public/uploads/' + now + newImage.name,
-          function (err) {
-            if (err) {
-              console.log(err);
-            }
+      );
+      var movedImage = '/uploads/' + now + newImage.name;
+    }
+    if(req.files.image2){
+      var now = moment();
+      let newImage2 = req.files.image2;
+      newImage2.mv(
+        './public/uploads/' + now + newImage2.name,
+        function (err) {
+          if (err) {
+            console.log(err);
           }
-        );
-        let newImage2 = req.files.image2;
-        newImage2.mv(
-          './public/uploads/' + now + newImage2.name,
-          function (err) {
-            if (err) {
-              console.log(err);
-            }
-          }
-        );
-        let newImage3 = req.files.image3;
-        newImage3.mv(
-          './public/uploads/' + now + newImage3.name,
-          function (err) {
-            if (err) {
-              console.log(err);
-            }
-          }
-        );
-        var movedImage = '/uploads/' + now + newImage.name;
-        var movedImage2 = '/uploads/' + now + newImage2.name;
-        var movedImage3 = '/uploads/' + now + newImage3.name;
-        const newAbout = {
-            title: req.body.title,
-            text: req.body.text,
-            image: movedImage,
-            image2: movedImage2,
-            image3: movedImage3,
         }
-        About.create(newAbout, (err, about) => {
-            if(err){console.log(err); res.redirect('back')}
-            res.redirect('back');
-        });
-    } 
+      );
+      var movedImage2 = '/uploads/' + now + newImage2.name;
+    }
+    if(req.files.image3){
+      var now = moment();
+      let newImage3 = req.files.image3;
+      newImage3.mv(
+        './public/uploads/' + now + newImage3.name,
+        function (err) {
+          if (err) {
+            console.log(err);
+          }
+        }
+      );
+      var movedImage3 = '/uploads/' + now + newImage3.name;
+    }
+    const newAbout = {
+        title: req.body.title,
+        text: req.body.text,
+        image: movedImage,
+        image2: movedImage2,
+        image3: movedImage3,
+    }
+    About.create(newAbout, (err, about) => {
+        if(err){console.log(err); res.redirect('back')}
+        res.redirect('back');
+    });
+  } 
 });
 
 router.get('/:about/edit', middleware.isLoggedIn, (req, res) => {
@@ -97,43 +105,45 @@ router.put('/:about/edit', middleware.isLoggedIn, (req, res) => {
         about.save()
         res.redirect('back');
     } else {
+      if(req.files.image){
         var now = moment();
         let newImage = req.files.image;
-        if(newImage){
-            newImage.mv(
-              './public/uploads/' + now + newImage.name,
-              function (err) {
-                if (err) {
-                  console.log(err);
-                }
-              }
-            );
-        }
-        let newImage2 = req.files.image2;
-        if(newImage2){
-            newImage2.mv(
-              './public/uploads/' + now + newImage2.name,
-              function (err) {
-                if (err) {
-                  console.log(err);
-                }
-              }
-            );
-        }
-        let newImage3 = req.files.image3;
-        if(newImage3){
-            newImage3.mv(
-              './public/uploads/' + now + newImage3.name,
-              function (err) {
-                if (err) {
-                  console.log(err);
-                }
-              }
-            );
-        }
+        newImage.mv(
+          './public/uploads/' + now + newImage.name,
+          function (err) {
+            if (err) {
+              console.log(err);
+            }
+          }
+        );
         var movedImage = '/uploads/' + now + newImage.name;
+      }
+      if(req.files.image2){
+        var now = moment();
+        let newImage2 = req.files.image2;
+        newImage2.mv(
+          './public/uploads/' + now + newImage2.name,
+          function (err) {
+            if (err) {
+              console.log(err);
+            }
+          }
+        );
         var movedImage2 = '/uploads/' + now + newImage2.name;
+      }
+      if(req.files.image3){
+        var now = moment();
+        let newImage3 = req.files.image3;
+        newImage3.mv(
+          './public/uploads/' + now + newImage3.name,
+          function (err) {
+            if (err) {
+              console.log(err);
+            }
+          }
+        );
         var movedImage3 = '/uploads/' + now + newImage3.name;
+      }
             about.title = req.body.title;
             about.text = req.body.text;
             about.image = movedImage,
