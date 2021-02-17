@@ -7,21 +7,21 @@
     <div class="row">
         <div class="col-md-4 col-sm-12 head-room d-flex justify-content-center">
             <div class="card">
-              <div class="card-header text-center">
-                  <h1>Timothy E Berry</h1>
-              </div>
-              <div class="card-body">
-                <div class="d-flex justify-content-center">
-                    <img src="/images/tim.jpg" class="img-tim img-fluid" alt="Repeater Image">
+                <div class="card-header text-center">
+                    <h1>Timothy E Berry</h1>
                 </div>
-                <hr>
-                <div class="text-center">
-                    <h2>WB4GBI</h2>
-                    <br>
-                    <p>214 ECHODALE LN</p>
-                    <p>KNOXVILLE, TN 37920</p>
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <img src="/images/tim.jpg" class="img-tim img-fluid" alt="Repeater Image">
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <h2>WB4GBI</h2>
+                        <br>
+                        <p>214 ECHODALE LN</p>
+                        <p>KNOXVILLE, TN 37920</p>
+                    </div>
                 </div>
-              </div>
             </div>
         </div>
         <div class="col-md-8 col-sm-12 head-room">
@@ -41,20 +41,11 @@
                         </div>
                         <div class="mb-3">
                           <label for="exampleInputPassword1" class="form-label">Article Body</label>
-                          <textarea rows="10" cols="70" class="form-control" name="text"></textarea>
+                          <textarea id="htmeditor" class="form-control" name="text"></textarea><script src="https://htmeditor.com/js/htmeditor.min.js"      htmeditor_textarea="htmeditor"      full_screen="no"      editor_height="480"     run_local="no"> </script> 
                         </div>
                         <div class="mb-3">
                           <label for="exampleInputPassword1" class="form-label">Image</label>
                           <input type="file" class="form-control" name="image" id="">
-                        </div>
-                        <div class="mb-3">
-                          <label for="exampleInputPassword1" class="form-label">Image</label>
-                          <input type="file" class="form-control" name="image2" id="">
-                        </div>
-                        <div class="mb-3">
-                          <label for="exampleInputPassword1" class="form-label">Image</label>
-                          <input type="file" class="form-control" name="image3" id="">
-                        </div>
                         <div class="text-center">
                             <button class="btn btn-md btn-primary" type="submit">Submit</button>
                         </div>
@@ -62,6 +53,7 @@
                   </div>
                 </div>
             </div>
+            <br>
         <% } %>
             <% abouts.forEach((about) => { %>
             <div class="foot-room">
@@ -87,16 +79,6 @@
                                     <img class="article-image-sm img-fluid" src="<%= about.image %>" alt="">
                                 </div>
                             <% } %>
-                            <% if(about.image2){ %>
-                                <div class="col-md-4 col-sm-12">
-                                    <img class="article-image-sm img-fluid" src="<%= about.image2 %>" alt="">
-                                </div>
-                            <% } %>
-                            <% if(about.image3){ %>
-                                <div class="col-md-4 col-sm-12">
-                                    <img class="article-image-sm img-fluid" src="<%= about.image3 %>" alt="">
-                                </div>
-                            <% } %>
                         </div>
                         <% } %>
                     </div>
@@ -105,6 +87,7 @@
             <% }) %>
         </div>
     </div>
+</div>
 </div>
 
 <%- include('../partials/footer') %>

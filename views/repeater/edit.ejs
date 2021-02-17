@@ -21,10 +21,9 @@
                   <label for="exampleInputPassword1" class="form-label">Location</label>
                   <input type="text" class="form-control" name="location" value="<%= repeater.location %>" id="exampleInputPassword1">
                 </div>
-                <%- include('../partials/legend') %>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Brief Information (This will appear as one paragraph)</label>
-                  <textarea rows="10" cols="70" class="form-control" name="statusText"><%= repeater.statusText %></textarea>
+                  <textarea id="htmeditor" class="form-control" name="statusText"><%- repeater.statusText %></textarea><script src="https://htmeditor.com/js/htmeditor.min.js"      htmeditor_textarea="htmeditor"      full_screen="no"      editor_height="480"     run_local="no"> </script> 
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Repeater Image</label>

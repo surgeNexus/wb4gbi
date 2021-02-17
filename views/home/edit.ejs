@@ -14,9 +14,9 @@
                   <input type="text" class="form-control" name="name" value="<%= home.name %>" id="freq" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
-                    <%- include('../partials/legend') %>
                   <label for="exampleInputPassword1" class="form-label">Article Body</label>
-                  <textarea rows="10" cols="70" class="form-control" name="text"><%= home.text %></textarea>
+                   <!-- Embed the HTMEditor -->
+                  <textarea id="htmeditor" class="form-control" name="text"><%= home.text %></textarea><script src="https://htmeditor.com/js/htmeditor.min.js"      htmeditor_textarea="htmeditor"      full_screen="no"      editor_height="480"     run_local="no"> </script> 
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Image</label>
